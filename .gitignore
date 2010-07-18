@@ -1,0 +1,13 @@
+.DS_Store
+log/*
+tmp/*
+db/*.sqlite3
+db/schema.rb
+db/backup/*
+db/sphinx/*
+private/*
+*.tmp_*
+*.Thumbs.db*
+"config/app_config.yml"
+public/javascripts/base.js
+public/stylesheets/base.css
