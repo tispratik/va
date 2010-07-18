@@ -1,0 +1,2 @@
+#Scaffold
+ruby script/generate dry_scaffold User username:string login_email:string is_email_verified:boolean crypted_password:string password_salt:string persistence_token:string single_access_token:string perishable_token:string last_login_ip:string last_login_at:date

@@ -1,0 +1,8 @@
+= link_to " Open Profiles ", :popup => :true
+= link_to " Organize Mosaic ", :popup => :true
+= link_to " Work Backstage ", nil, :class => :orange
+- if logged_in?
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;|
+  = link_to " My Account ", :popup => :true
+  = link_to " My Profile ", edit_registration_path, :popup => :true
+  = link_to "Logout #{current_user}", destroy_user_session_path

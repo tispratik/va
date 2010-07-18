@@ -1,0 +1,46 @@
+%h2
+  Shopping Cart
+
+%table
+  #line_items
+  %tr
+    %th
+      Product
+    %th
+      Qty
+    %th
+      .price
+        Unit Price
+    %th
+      .price
+        Full Price
+
+  - for line_item in @cart.line_items
+    %tr
+     
+      %td
+        =h line_item.product.name
+      %td
+        .qty
+          = line_item.quantity
+      %td
+        .price
+          = number_to_currency(line_item.unit_price)
+      %td
+        .price
+          = number_to_currency(line_item.full_price)
+
+  %tr
+    %td
+      .total price
+     
+      Total:
+      = number_to_currency @cart.total_price
+
+
+%p
+  = link_to "Continue Shopping", products_path  |
+  = link_to "Checkout", new_order_path
+
+%p
+  = link_to image_tag("https://www.paypal.com/en_US/i/btn/btn_xpressCheckout.gif"), express_new_order_path 

@@ -1,0 +1,18 @@
+development:
+  domain: localhost:3000
+  smtp_address: "smtp.example.com"
+  smtp_port: 999
+  smtp_domain: "www.example.com"
+  smtp_username: "foo.bar@gmail.com"
+  smtp_password: "secret"
+  
+test:
+  domain: test.host
+
+production:
+  domain: example.com
+  smtp_address: "smtp.example.com"
+  smtp_port: 999
+  smtp_domain: "www.example.com"
+  smtp_username: "foo.bar@gmail.com"
+  smtp_password: "secret"

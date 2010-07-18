@@ -1,0 +1,52 @@
+:javascript
+  $(document).ready(function() {
+    /*
+    $('#user_ucontact_attributes_country_id').change(function() {
+      $.get("#{regions_registration_path}", {country_id: this.value}, function(data) {
+        $('#user_ucontact_attributes_region_id').html(data)
+      })
+    })
+    $('#user_ucontact_attributes_region_id').change(function() {
+      $.get("#{cities_registration_path}", {region_id: this.value}, function(data) {
+        $('#user_ucontact_attributes_city_id').html(data)
+      })
+    })
+    */
+    
+    $("#user_login_email").rules("add", {
+      required: true, email: true
+    })
+    $('#user_password_confirmation').rules("remove", "required")
+  })
+  
+%h1
+  Edit Profile
+  
+- semantic_form_for @user, :url => registration_path, :live_validations => true do |f|
+
+  - f.inputs :name => "Login Information" do
+    = f.input :username
+    = f.input :login_email
+    = f.input :password
+    = f.input :password_confirmation
+
+  - f.inputs :name => "Account Information", :for => :usr do |uf|
+    = uf.input :first_name
+    = uf.input :last_name
+    = uf.input :one_line_bio
+    
+  - f.inputs :name => "Contact Information", :for => :ucontact do |cf|
+    = cf.input :country
+    = cf.input :city
+    = cf.input :state
+    = cf.input :street1
+    = cf.input :street2
+    = cf.input :zip
+    = cf.input :telnum1
+    = cf.input :telnum1_type, :as => :select, :collection => Ucontact::OP_PHONE_TYPES, :prompt => false
+    = cf.input :telnum2
+    = cf.input :telnum2_type, :as => :select, :collection => Ucontact::OP_PHONE_TYPES, :prompt => false
+    = cf.input :webpage1
+    = cf.input :time_zone, :as => :time_zone
+      
+  = f.buttons

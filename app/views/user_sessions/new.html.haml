@@ -1,0 +1,46 @@
+- form_for @user_session, :url => user_session_path  do |f|
+  .theloginbox
+    %table
+      %tr
+        %td
+      %tr
+        %td
+          = f.label :username, "Username: "
+          \&nbsp;&nbsp;
+      %tr
+        %td
+          = f.text_field :username, :size =>15
+      %tr
+        %td
+          = f.label :password, "Password: "
+      %tr
+        %td
+          = f.password_field :password, :size =>15
+      %tr
+        %td
+          = submit_tag "Sign in",:class => "grey"
+      %tr
+        %td
+%br
+/ - form_tag :controller => :passwords, :action => 'forgot' do
+/   .theloginbox
+/     %table
+/       %tr
+/         %td
+/       %tr
+/         %td
+/           Forgot Password
+/       %tr
+/         %td
+/           = label :email, "Email Id: "
+/       %tr
+/         %td
+/           = text_field 'attr', 'email_str', :size =>15
+/       %tr
+/         %td
+/           = submit_tag "Get Password",:class => "grey", :size=>11
+/       %tr
+/         %td
+
+Don't have an account?
+= link_to "Sign Up", new_registration_path

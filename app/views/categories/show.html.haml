@@ -1,0 +1,15 @@
+%h2
+ - @category.name
+
+%ul
+ - for product in @category.products
+  %li
+   = link_to h(product.name), product
+
+
+
+%p
+ = link_to "Edit", edit_category_path(@category)
+ = link_to "Destroy", @category, :confirm => 'Are you sure?', :method => :delete  |
+ = link_to "View All", categories_path
+

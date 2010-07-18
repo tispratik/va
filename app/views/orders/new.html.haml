@@ -1,0 +1,72 @@
+%h2
+  New Order
+
+- semantic_form_for @order do |f|
+  = f.error_messages
+  - if @order.express_token.blank?
+
+    %p
+      = f.label :card_type
+      %br
+        = f.select :card_type, [["Visa", "visa"], ["MasterCard", "master"], ["Discover", "discover"], ["American Express", "american_express"]]
+
+    %p
+      = f.label :card_number
+      %br
+      = f.text_field :card_number        
+
+    %p
+      = f.label :card_expires_on
+      %br
+      = f.date_select :card_expires_on, :discard_day => true, :start_year => Date.today.year, :end_year => (Date.today.year+10), :add_month_numbers => true
+
+    %p
+      = f.label :card_verification, "Card Verification Value (CVV)"
+      %br
+      = f.text_field :card_verification
+
+    %p
+      = f.label :first_name
+      %br
+      = f.text_field :first_name
+
+    %p
+      = f.label :last_name
+      %br
+      = f.text_field :last_name
+
+    %p
+      = f.label :address
+      %br
+      = f.text_field :ip_address
+
+    %p
+      = f.label :city
+      %br
+      = f.text_field :city
+
+    %p
+      = f.label :zip_code
+      %br
+      = f.text_field :zip_code
+
+    %p
+      = #f.label :state
+      %br
+      = #f.text_field :state
+
+    %p
+      = f.label :phone
+      %br
+      = f.text_field :phone
+
+  - else
+    = f.hidden_field :express_token
+    %p
+      Name: =h @order.first_name  =h @order.last_name
+    %p
+      TODO Display order confirmation details
+
+  %p
+    = f.submit "Add Credit Card"
+

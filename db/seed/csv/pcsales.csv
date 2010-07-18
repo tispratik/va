@@ -1,0 +1,20 @@
+id,name,description,pcsaleable_type,pcsaleable_id,start_date,end_date,is_current,minqty,maxqty
+1,Backstage,Manage Projects,Pcproduct,1,6/21/2006,7/19/2008,0,0,1
+2,IMer,Instant Messenger tool,Pcproduct,2,4/8/2009,1/1/2036,1,0,1
+3,Backstage,Project Management tool,Pcproduct,3,7/20/2008,1/1/2036,1,0,1
+4,Mega,Backstage plan,Pcplan,1,7/20/2008,1/1/2036,1,0,1
+5,Large,Backstage plan,Pcplan,2,7/20/2008,1/1/2036,1,0,1
+6,Medium,Backstage plan,Pcplan,3,7/20/2008,1/1/2036,1,0,1
+7,Small,Backstage plan,Pcplan,4,7/20/2008,1/1/2036,1,0,1
+8,Free,Backstage plan,Pcplan,5,7/20/2008,1/1/2036,1,0,1
+9,User,Backstage booster,Pcbooster,1,7/20/2008,1/1/2036,1,0,5
+10,Space,Backstage booster,Pcbooster,2,7/20/2008,1/1/2036,1,0,5
+11,Projects,Backstage booster,Pcbooster,3,7/20/2008,1/1/2036,1,0,5
+12,SSL Security,Backstage addon,Pcaddon,1,7/20/2008,1/1/2036,1,0,1
+13,SMS,Backstage usage,Pcusage,1,7/20/2008,1/1/2036,1,0,1
+14,SMS,Backstage usage,Pcusage,2,7/20/2008,1/1/2036,1,0,1
+15,FOGJHS,,Pccoupon,1,7/20/2008,1/1/2009,0,0,1
+16,ERKSKD,,Pccoupon,2,7/20/2008,1/1/2036,1,0,1
+17,EKRKET,,Pccoupon,3,7/20/2008,1/1/2036,1,0,1
+18,EKTETK,,Pccoupon,4,7/20/2008,1/1/2036,1,0,1
+19,KNEFK,,Pccoupon,5,7/20/2008,1/1/2036,1,0,1
