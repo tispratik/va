@@ -11,5 +11,5 @@ Rails::Initializer.run do |config|
   config.gem 'geoip'  
   config.gem 'haml'
   config.gem 'email_veracity'
-  #config.gem "activemerchant", :lib => "active_merchant", :version => "1.4.1"
+  config.gem "activemerchant"
 end
