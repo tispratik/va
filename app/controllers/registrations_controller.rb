@@ -1,4 +1,3 @@
-require 'GeoIP'
 class RegistrationsController < ApplicationController
 
   skip_before_filter :login_required, :except => [:edit, :update]
@@ -12,19 +11,6 @@ class RegistrationsController < ApplicationController
     @user.valid?
     if @user.errors.empty?
       @user.save
-      ip='24.171.23.184' #request.env['REMOTE_ADDR']
-      geoipobj = GeoIP.new("C://rubyonrails//rails_apps//va//private//geoip//geolitecity.dat").country(ip)
-      if geoipobj != nil
-        u = Ucontact.new
-        u.user_id = @user.id
-        u.latitude = geoipobj[9]
-        u.longitude = geoipobj[10]
-        u.country = Country.first(:conditions => { :iso3 => geoipobj[3] }).ison
-        u.state = geoipobj[2] + "." + geoipobj[6]
-        u.city = geoipobj[7]
-        u.zip = geoipobj[8]
-        u.save
-      end
       flash[:notice] = "Account registered!"
       redirect_to_target_or_default @user
     else

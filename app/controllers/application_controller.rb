@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
-  
+
   include Authentication
   include GuiHelpers
   include RoutingErrors
-  include ExceptionNotifiable
+  #include ExceptionNotifiable
   
   layout proc{ |c| c.request.xhr? ? false : "application" }
   
@@ -45,4 +45,5 @@ class ApplicationController < ActionController::Base
     @current_cart
   end
   
+
 end

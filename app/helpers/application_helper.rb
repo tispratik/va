@@ -1,5 +1,4 @@
 module ApplicationHelper
-   
   def profile_image (email, options = {})
     # url_for "http://gravatar.com/avatar/#{Digest::MD5.hexdigest(email)}?s=50"
     url_for 'rails.png'
@@ -21,6 +20,5 @@ module ApplicationHelper
       eos
     end
     str
-  end
-  
+  end  
 end

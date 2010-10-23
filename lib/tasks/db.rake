@@ -45,7 +45,7 @@ namespace :db do
   private
   
   def load_fixtures(dir, always = false)
-    Dir.glob(File.join(RAILS_ROOT, 'db', dir, '*.yml')).each do |fixture_file|
+    Dir.glob(File.join(Rails.root, 'db', dir, '*.yml')).each do |fixture_file|
       puts "File: " + fixture_file
       table_name = File.basename(fixture_file, '.yml')
       
@@ -70,15 +70,15 @@ namespace :db do
     ActiveRecord::Base.connection
   end
   
-  desc "Backup the database to a file. Options: DIR=base_dir RAILS_ENV=production MAX=20"
+  desc "Backup the database to a file. Options: DIR=base_dir Rails.env=production MAX=20"
   task :backup => [:environment] do
     datestamp = Time.now.strftime("%Y-%m-%d_%H-%M-%S")    
     base_path = ENV["DIR"] || "db"
     backup_base = File.join(base_path, 'backup')
     backup_folder = File.join(backup_base, datestamp)
-    backup_file = File.join(backup_folder, "#{RAILS_ENV}_dump.sql")    
+    backup_file = File.join(backup_folder, "#{Rails.env}_dump.sql")    
     FileUtils.makedirs(backup_folder)    
-    db_config = ActiveRecord::Base.configurations[RAILS_ENV]   
+    db_config = ActiveRecord::Base.configurations[Rails.env]   
     sh "mysqldump -u #{db_config['username'].to_s} #{'-p' if db_config['password']}#{db_config['password'].to_s} --opt #{db_config['database']} > #{backup_file}"     
     dir = Dir.new(backup_base)
     all_backups = (dir.entries - ['.', '..']).sort.reverse
@@ -92,9 +92,9 @@ namespace :db do
     puts "Deleted #{unwanted_backups.length} backups, #{all_backups.length - unwanted_backups.length} backups available"
   end
   
-  desc "Raise an error unless the RAILS_ENV is development"
+  desc "Raise an error unless the Rails.env is development"
   task :development_environment_only do
-    raise "Hey, development only you monkey!" unless RAILS_ENV == 'development'
+    raise "Hey, development only you monkey!" unless Rails.env == 'development'
   end
   
   task :test_data => [:environment, :development_environment_only] do
@@ -109,11 +109,11 @@ namespace :db do
   
   desc "Loads images from public/images directory to database"
   task :image_seed => :environment do
-    Dir.chdir(File.join(RAILS_ROOT,"public/images"))
+    Dir.chdir(File.join(Rails.root,"public/images"))
     @image_paths = Dir["*.png"]
     
     for asset in @image_paths
-      path = File.join(RAILS_ROOT, "public/images", asset)
+      path = File.join(Rails.root, "public/images", asset)
       asset = Asset.create #create, as we need id for file name interpolation
       asset.data = File.new(path)
       puts asset.save ? "Image: #{asset.data_file_name} added successfully" : "Problem saving image: #{asset.data_file_name}"

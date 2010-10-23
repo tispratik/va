@@ -1,10 +1,15 @@
 module Authentication
+
   def self.included(controller)
-    controller.send :before_filter, :set_current_user_in_model
+    controller.send :before_filter, :set_current_user_in_model, :new_user_session
     controller.send :helper_method, :current_user, :logged_in?, :redirect_to_target_or_default, :cu, :cid
     controller.send :after_filter, :store_target_location
     controller.filter_parameter_logging :password, :password_confirmation
   end
+  
+  def new_user_session
+    @new_user_session = UserSession.new 
+  end 
   
   def current_user_session
     return @current_user_session if defined?(@current_user_session)
@@ -49,7 +54,7 @@ module Authentication
   
   def store_target_location
     if (request.request_uri <=> session[:return_to]) == 0
-      session[:return_to] = request.request_uri
+      session[:return_to] = request.fullpath #request.request_uri
     end
   end
   
