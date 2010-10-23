@@ -4,12 +4,6 @@ Va::Application.routes.draw do
   resource :registration, :only => [:new, :create, :edit, :update, :password, :destroy], :as => :users,
       :path_names => {:new => :sign_up}, :member => {:validate => :post}, :collection => {:regions => :get, :cities => :get}
   
-      #with_options(:controller => 'user_sessions', :name_prefix => nil) do |session|
-    #session.new_user_session     "sign_in",  :action => :new, :conditions => {:method => :get}
-    #session.user_session         "sign_in",  :action => :create, :conditions => {:method => :post}
-    #session.destroy_user_session "sign_out", :action => :destroy, :conditions => {:method => :get}
-    #end
-  
   scope 'session' do
     get 'sign_in' => 'user_sessions#new', :as => :new_user_session
     post 'sign_in' => 'user_sessions#create', :as => :user_session
@@ -18,7 +12,7 @@ Va::Application.routes.draw do
   
   resources :users
   #connect "live_validations/:action", :controller => "live_validations"
-  match "live_validations/:action", :to => 'live_validations'
+  match "live_validations/:action" => 'live_validations'
   #root :controller => :users, :action => :me
   root :to => 'users#me'
 
