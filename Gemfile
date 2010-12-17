@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
-gem 'mysql', '2.8.1'
+gem 'rails', '3.0.3'
+gem 'mysql'
 #gem 'geoip' --> Broken with Rails3
 gem 'authlogic'
 gem 'haml'
