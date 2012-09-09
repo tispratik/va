@@ -1,0 +1,8 @@
+development: &development
+  adapter: mysql
+  encoding: utf8
+  reconnect: false
+  host: localhost
+  database: va_development
+  username: root
+  password:
